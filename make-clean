@@ -13,7 +13,7 @@ fi
 echo
 
 echo "Deleting virtual environment (venv) ..."
-rm -rf venv/
+rm -rf ~/venv
 echo "Done"
 
 echo "Deleting database folder (data) ..."
@@ -23,4 +23,4 @@ echo "Done"
 echo "Environment Clean!"
 echo
 
-# 2017.08.16-DEA
+# 2017.08.24-DEA

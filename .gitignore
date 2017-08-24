@@ -8,6 +8,7 @@
 # Django Data 
 /static
 /media
+/secrets.json
 
 # OS Related
 .DS_Store

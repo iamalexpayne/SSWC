@@ -13,11 +13,11 @@ fi
 echo
 
 echo "Creating virtual enviroment (venv) ..."
-virtualenv -p python3 venv --always-copy
+virtualenv --python=python3 ~/venv
 echo "Done"
 
 echo "Activating virtual enviroment (venv) ..."
-source venv/bin/activate
+source ~/venv/bin/activate
 echo "Done"
 
 echo "Upgrading pip ..."
@@ -28,13 +28,13 @@ echo "Installing prerequisites ..."
 pip install -r requirements.txt
 echo "Done"
 
-echo "Importing initial-data ..."
+echo "Importing data ..."
 mkdir -p data
 python manage.py migrate --settings=config.settings.local
-python manage.py loaddata config/fixtures/superuser.json --settings=config.settings.local 
+python manage.py loaddata config/fixtures/superuser.json --settings=config.settings.local
 echo "Done"
 
 echo "Environment Ready!"
 echo
 
-# 2017.08.16-DEA
+# 2017.08.24-DEA

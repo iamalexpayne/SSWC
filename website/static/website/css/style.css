@@ -1,0 +1,20 @@
+/* DEFAULT CSS */
+
+body {
+	text-align: center;
+	font-size: 2em;
+	font-family: sans-serif;
+	width: 100%;
+}
+
+p {
+	margin-top: 30vh;
+	font-weight: 200;
+}
+
+div {
+	font-size: 4em;
+	font-weight: 600;
+}
+
+/* ----------- */
