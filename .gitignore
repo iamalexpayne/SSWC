@@ -1,0 +1,22 @@
+# Vagrant Settings
+/.vagrant
+/*.log
+
+# Database
+/data
+
+# Django Data 
+/static
+/media
+
+# OS Related
+.DS_Store
+
+# Python Files
+__pycache__/
+*.py[cod]
+
+# Virtual Env
+/venv
+
+# 2017.08.24-DEA

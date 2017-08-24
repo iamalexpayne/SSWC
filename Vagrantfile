@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.box_version = "20170815.1.0"
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.provision "shell", inline: $shell
+end
+
+$shell = <<-'CONTENTS'
+  apt-get update
+  apt-get install -y python3-pip
+  pip3 install --upgrade pip
+  pip3 install virtualenv
+CONTENTS
+
+# 2017.08.23-DEA

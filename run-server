@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Activating virtual enviroment (venv) ..."
+source venv/bin/activate
+echo "Done"
+
+echo "Runnning server ..."
+python manage.py runserver --settings=config.settings.local 0.0.0.0:8000
+echo "Done"
+
+# 2017.08.16-DEA
