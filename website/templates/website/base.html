@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Test Project</title>
+	<title>Test Project {% block title %} {% endblock %}</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="{% static 'website/css/style.css' %}"/>
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	{% block welcome %}
+	{% block contents %}
 
 	{% endblock %}
 </body>

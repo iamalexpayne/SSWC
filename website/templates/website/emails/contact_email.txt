@@ -1,0 +1,7 @@
+Customer Name: {{ name }}
+
+Customer Email: {{ email }}
+
+Customer Message:
+
+{{ message }}
