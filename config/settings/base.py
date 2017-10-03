@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website'
 ]
-
 # [SC] Added website application
 
 MIDDLEWARE = [
@@ -84,7 +83,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
 # [SC] Disable default database on base
 
 # Password validation

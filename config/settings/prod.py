@@ -30,3 +30,7 @@ DATABASES = {
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_SECRET_KEY')
+
+RECAPTCHA_SITE_KEY = get_secret('RECAPTCHA_SITE_KEY')

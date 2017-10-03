@@ -29,7 +29,7 @@
 	<div class="container">
 	<div class="col-md-5">
 	    <div id="contact-form">  
-	        <form role="form" method="POST" action="{% url 'website:contact_page' %}" class="form-area">
+	        <form id="email-form" role="form" method="POST" action="{% url 'website:contact_page' %}" class="form-area">
 				{% csrf_token %}
 				{{ form.non_field_errors }}
 
@@ -54,8 +54,10 @@
 						<p>{{ form.message.errors|first }}</p>
 					{% endif %}
                 </div>
+
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onSubmit" data-size="invisible"></div>
 	            
-	        	<button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+	        	<input type="submit" value="Submit Form" class="btn btn-primary pull-right" onclick="validateCaptcha()">
 	        </form>
 	    </div>
 	</div>
@@ -80,6 +82,19 @@
 		        }
 		    });    
 		});
+	</script>
+
+	<!-- reCAPTCHA -->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+	<script>
+		function validateCaptcha() {
+			event.preventDefault();
+			grecaptcha.execute();
+		}
+		function onSubmit(token) {
+			document.getElementById("email-form").submit();
+		}
 	</script>
 
 {% endblock %}
