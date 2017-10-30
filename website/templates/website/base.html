@@ -1,12 +1,14 @@
 {% load staticfiles %}
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-	<!-- Meta Data -->
+	
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Test Project {% block title %} {% endblock %}</title>
+	<title>Django Template Project{% block title %} {% endblock title %}</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="{% static 'website/css/style.css' %}"/>
@@ -14,10 +16,19 @@
 	<!-- Favicon -->
 	<link rel="icon" href="{% static 'website/images/favicon.ico' %}?v=2">
 
+	{% block head_scripts %}
+
+	{% endblock head_scripts %}
+
 </head>
 
 <body>
 	{% block contents %}
 
-	{% endblock %}
+	{% endblock contents %}
+
+	{% block javascript %}
+
+	{% endblock javascript %}
 </body>
+</html>

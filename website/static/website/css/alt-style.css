@@ -80,9 +80,9 @@ button:enabled:hover {
 #hint { color: #a2a1a4; }
 
 .center-recaptcha {
-    margin: 30px auto;
-    display: block;
-    width: 305px;
+	margin: 30px auto;
+	display: block;
+	width: 305px;
 }
 
 .smooth3 {
@@ -93,11 +93,11 @@ button:enabled:hover {
 }
 
 .red {
-    color:red;
+	color:red;
 }
 
 .form-area {
-    background-color: #FAFAFA;
+	background-color: #FAFAFA;
 	padding: 10px 40px 60px;
 	margin: 10px 0px 60px;
 	border: 1px solid GREY;

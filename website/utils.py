@@ -4,13 +4,16 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.conf import settings
 
+
+# Application Utils
+
 # Send Contact Email
 def send_contact_email(contact_data):
-	from_email = 'website@spiffy-django-template.dev'
-	subject = '[spiffy-django-template.dev] Contact Page'
+	from_email = 'website@django-template.dev'
+	subject = '[django-template.dev] Contact Page'
 	text_content = render_to_string('website/emails/contact_email.txt', contact_data)
 	html_content = render_to_string('website/emails/contact_email.html', contact_data)
-	to_email = 'website@spiffy-django-template.dev'
+	to_email = 'website@django-template.dev'
 	reply_to = contact_data['email']
 
 	email = EmailMultiAlternatives(

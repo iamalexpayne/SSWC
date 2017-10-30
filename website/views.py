@@ -5,11 +5,11 @@ from .forms import ContactForm
 from .utils import send_contact_email, recaptcha_validation
 
 
-# Create your views here.
+# Application Views
 
 # Home View
 def home_page(request):
-    return render(request, 'website/home_page.html')
+	return render(request, 'website/home_page.html')
 
 # Contact Page
 def contact_page(request):
@@ -21,4 +21,5 @@ def contact_page(request):
 	else:
 		form = ContactForm()
 
-	return render(request, 'website/contact_page.html', { 'form': form, 'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY } )
+	context = { 'form': form, 'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY }
+	return render(request, 'website/contact_page.html', context)

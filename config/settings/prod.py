@@ -16,21 +16,23 @@ def get_secret(setting, secrets=secrets):
 		error_msg = 'Set the {0} environment variable'.format(setting)
 		raise ImproperlyConfigured(error_msg)
 
-ALLOWED_HOSTS = ['*']
-
 SECRET_KEY = get_secret('SECRET_KEY')
 
 DEBUG = False
 
+ALLOWED_HOSTS = ['*']
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
+	}
 }
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_SECRET_KEY')
 
 RECAPTCHA_SITE_KEY = get_secret('RECAPTCHA_SITE_KEY')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

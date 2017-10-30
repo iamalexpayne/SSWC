@@ -10,7 +10,112 @@
 	<title>Test Project | Contact</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href={% static 'website/css/alt-style.css' %}>
+	<style>
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 2.3em;
+	color: #26292d;
+	background-color: #efefef;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline-block;
+	margin: 25px;
+	width: 100%;
+	max-width: 40%;
+}
+
+li a {
+	display: block;
+	width: 100%;
+	padding: 15px 0;
+	text-decoration: none;
+	color: #5d90e7;
+	border: 2px solid #5d90e7;
+}
+
+.selected {
+	background-color: #5d90e7;
+	color: white;
+}
+
+li a:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: #5d90e7;
+	background-color: #ffffff;
+}
+
+.stuff {
+	display: inline-block;
+	margin: 15px 25px;
+}
+
+.stuff p {
+	font-size: 2em;
+}
+
+h1 {
+	margin: 15px;
+	margin-top: 45px;
+}
+
+/*.glyphicon { font-size: 2em; }*/
+
+.glyphicon-ok { color: #2cb257; }
+.glyphicon-remove { color: #e34533; }
+
+button {
+	margin: 35px;
+	padding: 10px 25px;
+	border: none;
+	color: #efefef;
+	background-color: #5d90e7;
+}
+
+button:disabled {
+	background: none;
+	color: #5d90e7;
+	border: 2px solid #5d90e7;
+}
+
+button:enabled:hover {
+	background-color: #273681;
+}
+
+#hint { color: #a2a1a4; }
+
+.center-recaptcha {
+    margin: 30px auto;
+    display: block;
+    width: 305px;
+}
+
+.smooth3 {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.red {
+    color:red;
+}
+
+.form-area {
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	border: 1px solid GREY;
+}
+	</style>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,13 +133,13 @@
 
 	<div class="container">
 	<div class="col-md-5">
-	    <div id="contact-form">  
-	        <form id="email-form" role="form" method="POST" action="{% url 'website:contact_page' %}" class="form-area">
+		<div id="contact-form">  
+			<form id="email-form" role="form" method="POST" action="{% url 'website:contact_page' %}" class="form-area">
 				{% csrf_token %}
 				{{ form.non_field_errors }}
 
-	        	<br style="clear:both">
-                <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+				<br style="clear:both">
+				<h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
 				<div class="form-group">
 					<input type="text" class="form-control" id="name" name="name" placeholder="Name" {% if form.name.value %} value="{{ form.name.value }}" {% endif %} required>
 					{% if form.name.errors %}
@@ -47,40 +152,40 @@
 						<p>{{ form.email.errors|first }}</p>
 					{% endif %}
 				</div>
-                <div class="form-group">
-                <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7">{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
-                    <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+				<div class="form-group">
+				<textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7">{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
+					<span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
 					{% if form.message.errors %}
 						<p>{{ form.message.errors|first }}</p>
 					{% endif %}
-                </div>
+				</div>
 
-                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onSubmit" data-size="invisible"></div>
-	            
-	        	<input type="submit" value="Submit Form" class="btn btn-primary pull-right" onclick="validateCaptcha()">
-	        </form>
-	    </div>
+				<div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onSubmit" data-size="invisible"></div>
+				
+				<input type="submit" value="Submit Form" class="btn btn-primary pull-right" onclick="validateCaptcha()">
+			</form>
+		</div>
 	</div>
 	</div>
 
 	<script>
 		$(document).ready(function(){ 
-		    $('#characterLeft').text('140 characters left');
-		    $('#message').keydown(function () {
-		        var max = 140;
-		        var len = $(this).val().length;
-		        if (len >= max) {
-		            $('#characterLeft').text('You have reached the limit');
-		            $('#characterLeft').addClass('red');
-		            $('#btnSubmit').addClass('disabled');            
-		        } 
-		        else {
-		            var ch = max - len;
-		            $('#characterLeft').text(ch + ' characters left');
-		            $('#btnSubmit').removeClass('disabled');
-		            $('#characterLeft').removeClass('red');            
-		        }
-		    });    
+			$('#characterLeft').text('140 characters left');
+			$('#message').keydown(function () {
+				var max = 140;
+				var len = $(this).val().length;
+				if (len >= max) {
+					$('#characterLeft').text('You have reached the limit');
+					$('#characterLeft').addClass('red');
+					$('#btnSubmit').addClass('disabled');            
+				} 
+				else {
+					var ch = max - len;
+					$('#characterLeft').text(ch + ' characters left');
+					$('#btnSubmit').removeClass('disabled');
+					$('#characterLeft').removeClass('red');            
+				}
+			});    
 		});
 	</script>
 
