@@ -18,9 +18,15 @@ if [ "$REPLY" != "production" ]; then
 fi
 echo
 
-echo "Pulling most recent ..."
-git pull
-echo "Done"
+read -p "Do you want to pull update source code from the repository? (yes/no) "
+if [ "$REPLY" == "yes" ]; then
+	echo
+	echo "Pull most recent ..."
+	echo
+	git pull
+	echo "Done"
+fi
+echo
 
 echo "Creating virtual enviroment (venv) ..."
 virtualenv --python=python3 venv
