@@ -2,10 +2,13 @@
 
 echo "Activating virtual enviroment (venv) ..."
 source ~/venv/bin/activate
+if [ "$VIRTUAL_ENV" == "" ]; then
+   exit 1
+fi
 echo "Done"
 
 echo "Runnning server ..."
 python manage.py runserver 0.0.0.0:8000
 echo "Done"
 
-# 2017.11.01-DEA
+# 2017.11.08-DEA

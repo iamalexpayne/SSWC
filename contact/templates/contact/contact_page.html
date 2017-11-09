@@ -10,112 +10,10 @@
 	<title>Test Project | Contact</title>
 
 	<!-- CSS -->
-	<style>
-body {
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	font-family: sans-serif;
-	font-size: 2.3em;
-	color: #26292d;
-	background-color: #efefef;
-}
+	<link rel="stylesheet" href="{% static 'contact/css/style.css' %}"/>
 
-ul {
-	list-style-type: none;
-}
-
-li {
-	display: inline-block;
-	margin: 25px;
-	width: 100%;
-	max-width: 40%;
-}
-
-li a {
-	display: block;
-	width: 100%;
-	padding: 15px 0;
-	text-decoration: none;
-	color: #5d90e7;
-	border: 2px solid #5d90e7;
-}
-
-.selected {
-	background-color: #5d90e7;
-	color: white;
-}
-
-li a:hover {
-	cursor: pointer;
-	text-decoration: none;
-	color: #5d90e7;
-	background-color: #ffffff;
-}
-
-.stuff {
-	display: inline-block;
-	margin: 15px 25px;
-}
-
-.stuff p {
-	font-size: 2em;
-}
-
-h1 {
-	margin: 15px;
-	margin-top: 45px;
-}
-
-/*.glyphicon { font-size: 2em; }*/
-
-.glyphicon-ok { color: #2cb257; }
-.glyphicon-remove { color: #e34533; }
-
-button {
-	margin: 35px;
-	padding: 10px 25px;
-	border: none;
-	color: #efefef;
-	background-color: #5d90e7;
-}
-
-button:disabled {
-	background: none;
-	color: #5d90e7;
-	border: 2px solid #5d90e7;
-}
-
-button:enabled:hover {
-	background-color: #273681;
-}
-
-#hint { color: #a2a1a4; }
-
-.center-recaptcha {
-    margin: 30px auto;
-    display: block;
-    width: 305px;
-}
-
-.smooth3 {
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-
-.red {
-    color:red;
-}
-
-.form-area {
-    background-color: #FAFAFA;
-	padding: 10px 40px 60px;
-	margin: 10px 0px 60px;
-	border: 1px solid GREY;
-}
-	</style>
+	<!-- Favicon -->
+	<link rel="icon" href="{% static 'contact/images/favicon.ico' %}?v=2">
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -134,7 +32,7 @@ button:enabled:hover {
 	<div class="container">
 	<div class="col-md-5">
 		<div id="contact-form">  
-			<form id="email-form" role="form" method="POST" action="{% url 'website:contact_page' %}" class="form-area">
+			<form id="email-form" role="form" method="POST" action="{% url 'contact:contact_page' %}" class="form-area">
 				{% csrf_token %}
 				{{ form.non_field_errors }}
 
