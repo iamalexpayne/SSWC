@@ -7,8 +7,19 @@ if [ "$VIRTUAL_ENV" == "" ]; then
 fi
 echo "Done"
 
+echo "Syncing database ..."
+python manage.py makemigrations
+if [ ! $? -eq 0 ]; then
+   exit 1
+fi
+python manage.py migrate
+if [ ! $? -eq 0 ]; then
+   exit 1
+fi
+echo "Done"
+
 echo "Runnning server ..."
 python manage.py runserver 0.0.0.0:8000
 echo "Done"
 
-# 2017.11.08-DEA
+# 2017.11.15-DEA
