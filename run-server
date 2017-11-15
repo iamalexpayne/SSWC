@@ -3,18 +3,18 @@
 echo "Activating virtual enviroment (venv) ..."
 source ~/venv/bin/activate
 if [ "$VIRTUAL_ENV" == "" ]; then
-   exit 1
+  exit 1
 fi
 echo "Done"
 
 echo "Syncing database ..."
 python manage.py makemigrations
 if [ ! $? -eq 0 ]; then
-   exit 1
+  exit 1
 fi
 python manage.py migrate
 if [ ! $? -eq 0 ]; then
-   exit 1
+  exit 1
 fi
 echo "Done"
 
