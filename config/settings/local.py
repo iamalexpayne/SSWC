@@ -13,8 +13,18 @@ DATABASES = {
 	}
 }
 
+# Static Files
+
+STATIC_URL = '/static/'
+
+# Email Backend
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Google ReCaptcha
 
 RECAPTCHA_SECRET_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
 
 RECAPTCHA_SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+
+# 2017.11.22-DEA

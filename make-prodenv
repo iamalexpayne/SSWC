@@ -18,15 +18,11 @@ if [ "$REPLY" != "production" ]; then
 fi
 echo
 
-read -p "Do you want to pull update source code from the repository? (yes/no) "
-if [ "$REPLY" == "yes" ]; then
-  echo
-  echo "Pulling most recent ..."
-  echo
-  git pull
-  echo "Done"
+echo "Checking Secrets ..."
+if [ ! -f secrets.json ]; then
+  echo "[ERROR] Missing secrets.json! Aborting ..."; echo; exit 1
 fi
-echo
+echo "Done"
 
 echo "Creating virtual enviroment (venv) ..."
 virtualenv --python=python3 venv
@@ -56,12 +52,6 @@ if [ ! $? -eq 0 ]; then
 fi
 echo "Done"
 
-echo "Checking Secrets ..."
-if [ ! -f secrets.json ]; then
-  echo "Fail"; echo; exit 1
-fi
-echo "Done"
-
 echo "Applying migrations ..."
 mkdir -p data
 python manage.py migrate --settings=config.settings.prod
@@ -83,12 +73,12 @@ fi
 echo "Done"
 
 echo "Setting permissions ..."
-sudo chgrp www-data -R data/
-chmod 664 data/*
+chgrp www-data -R data/
 chmod 775 data
+chmod 664 data/*
 echo "Done"
 
 echo "Environment Ready!"
 echo
 
-# 2017.11.15-DEA
+# 2017.11.22-DEA

@@ -113,8 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# [Changed to local timezone]
-TIME_ZONE = 'US/Eastern'
+TIME_ZONE = 'US/Eastern' # [Changed to local timezone]
 
 USE_I18N = True
 
@@ -126,4 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+# [In separate configuration file]
+#STATIC_URL = '/static/'
+
+# 2017.11.22-DEA

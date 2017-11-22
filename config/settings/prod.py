@@ -29,10 +29,20 @@ DATABASES = {
 	}
 }
 
+# Static Files
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Email Backend
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Google ReCaptcha
 
 RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_SECRET_KEY')
 
 RECAPTCHA_SITE_KEY = get_secret('RECAPTCHA_SITE_KEY')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# 2017.11.22-DEA

@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
-  config.vm.box_version = "20171110.0.0"
+  config.vm.box_version = "20171122.0.0"
   config.vm.network "forwarded_port", guest: 8000, host: 8000
   config.vm.provision "shell", inline: $shell
 end
@@ -15,4 +15,4 @@ $shell = <<-'CONTENTS'
   pip3 install virtualenv
 CONTENTS
 
-# 2017.11.15-DEA
+# 2017.11.22-DEA
