@@ -22,27 +22,18 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-	}
-}
-
 # Static Files
-
-STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Email Backend
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp-relay.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Google ReCaptcha
 
 RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_SECRET_KEY')
 
 RECAPTCHA_SITE_KEY = get_secret('RECAPTCHA_SITE_KEY')
-
-# 2017.11.22-DEA
