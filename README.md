@@ -36,7 +36,7 @@ python manage.py makemessages --locale=es --no-wrap
 python manage.py compilemessages --locale=es
 ```
 
-### Template Version:
+-----
 
 ```python
 # 2017.12.02-DEA
