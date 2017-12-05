@@ -8,7 +8,9 @@ ALLOWED_HOSTS = []
 
 # Email Backend
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Google ReCaptcha
 
