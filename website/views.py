@@ -47,36 +47,55 @@ def details(request):
 	return render(request, 'website/details.html', context)
 
 
-# Add New Sighting
+# # Add New Sighting
+# def add_sighting(request):
+# 	if (request.method == "POST"):
+# 		form = SightingForm(request.POST)
+
+
+# 		name = request.POST.get('name')
+# 		person = request.POST.get('person')
+# 		location = request.POST.get('location')
+# 		date = request.POST.get('year') + '-' + request.POST.get('month') + '-' + request.POST.get('day')
+
+# 		sighted = parse_date(date)
+
+
+# 		print(name, person, location, sighted)
+		
+# 		sighting = Sightings(name, person, location, sighted)
+
+# 		sighting.save()
+
+# 		return redirect('website:home')
+
+
+# 	else:
+# 		flowers = Flowers.objects.using('sswc').all().order_by('comname')
+# 		features = Features.objects.using('sswc').all().order_by('location')
+# 		form = SightingForm()
+# 		context = {'flowers': flowers, 'features': features, 'form': form}
+
+# 		return render(request, 'website/add_sighting.html', context)
+
 def add_sighting(request):
 	if (request.method == "POST"):
 		form = SightingForm(request.POST)
-
-
-		name = request.POST.get('name')
-		person = request.POST.get('person')
-		location = request.POST.get('location')
-		date = request.POST.get('year') + '-' + request.POST.get('month') + '-' + request.POST.get('day')
-		
-		sighted = parse_date(date)
-
-
-		print(name, person, location, sighted)
-		
-		sighting = Sightings(name, person, location, sighted)
-
-		sighting.save()
-
-		return redirect('website:home')
-
-
+		if form.is_valid():
+			date = form.cleaned_data['year'] + '-' + form.cleaned_data['month'] + '-' + form.cleaned_data['day']
+			sighted = parse_date(date)
+			sighting = Sightings(name=form.cleaned_data['name'], person=form.cleaned_data['person'], location=form.cleaned_data['location'], sighted=sighted)
+			sighting.save(using='sswc')
+			return redirect('website:home')
 	else:
-		flowers = Flowers.objects.using('sswc').all().order_by('comname')
-		features = Features.objects.using('sswc').all().order_by('location')
-		context = {'flowers': flowers, 'features': features}
 		form = SightingForm()
 
-		return render(request, 'website/add_sighting.html', context)
+	flowers = Flowers.objects.using('sswc').all().order_by('comname')
+	location = Features.objects.using('sswc').all().order_by('location')
+
+	context = {'flowers': flowers, 'features': location, 'form': form }
+	return render(request, 'website/add_sighting.html', context)
+
 
 
 

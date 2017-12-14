@@ -24,7 +24,7 @@ class Flowers(models.Model):
 	comname = models.CharField(primary_key=True, db_column='COMNAME', unique=True, max_length=30)  # Field name made lowercase.
 
 	class Meta:
-			managed = False
+			managed = True
 			db_table = 'FLOWERS'
 
 	def get_image_name(self):
@@ -42,7 +42,7 @@ class Sightings(models.Model):
 	sighted = models.DateField(db_column='SIGHTED', blank=True, null=True)  # Field name made lowercase.
 
 	class Meta:
-			managed = False
+			managed = True
 			db_table = 'SIGHTINGS'
 			unique_together = (('name', 'person', 'location', 'sighted'),)
 
