@@ -1,43 +1,12 @@
-# Master Django Template
+This is the Databases Final Assignment.
 
-## Create Development Enviroment
+The Task
 
-### From the host machine to start the Vagrant enviroment:
+Create an interface that provides the following functionality:
 
-```shell
-vagrant up
-vagrant ssh
-```
+• Query - Allow the user to select from a list of flowers. Using the se- lected flower, display the 10 most recent sightings of the selected flower. Information should include the date, location, and who sighted the flower.
 
-### Inside the Vagrant enviroment:
+• Update - Allow a user to select and update flower information.
 
-```shell
-./make-devenv
-./run-server
-```
+• Insert - Allow a user to insert a new sighting of a flower.
 
-### To clean a develepment enviroment:
-
-```shell
-./make-clean
-```
-
-## Common Tasks
-
-### Create translation files (.po)
-
-```shell
-python manage.py makemessages --locale=es --no-wrap
-```
-
-### Compile translation files (.mo)
-
-```shell
-python manage.py compilemessages --locale=es
-```
-
------
-
-```python
-# 2017.12.02-DEA
-```
