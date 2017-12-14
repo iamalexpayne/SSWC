@@ -6,12 +6,13 @@ app_name = 'website'
 
 urlpatterns = [
 
-	# Home Page
-	url(r'^$', views.home_page, name='home_page'),
+	# Home
+	url(r'^$', views.home, name='home'),
 
-	# Login
-	url(r'^login/$', views.login, name='login'),
+	# Details
+	url(r'^details$', views.details, name='details'),
 
-	# Logout
-	url(r'^logout/$', views.logout, name='logout'),
+	# Add New Sighting
+	url(r'^add-sighting$', views.add_sighting, name='add_sighting'),
+
 ]

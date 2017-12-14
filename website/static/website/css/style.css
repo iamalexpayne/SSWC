@@ -1,10 +1,415 @@
-/* DEFAULT CSS */
+html {
+	height: 100%;
+}
 
 body {
+	width: 100%;
+	margin: 0;
+	font-size: 1.5rem;
+	padding: 0;
 	text-align: center;
-	font-size: 2em;
-	font-family: sans-serif;
+	background-color: #f2f2f2;
+	color: #2d2a2b;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+header {
+	max-width: 100%;
+}
+
+header a {
+	margin: 25px auto;
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+header img {
+	max-width: 100px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+h1 {
+	padding: 0 15px;
+}
+
+h1 {
+	font-family: 'Dosis', sans-serif;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 3rem;
+}
+
+h3, .edit-btn {
+	font-family: 'Dosis', sans-serif;
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 2rem;
+}
+
+h3 span {
+	padding-left: 25px;
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+}
+
+.edit-btn {
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	border-radius: 0;
+	border: none;
+	color: #D4145A; 
+	background-color: transparent;
+}
+
+h3 span a {
+	text-decoration: none;
+	color: #D4145A;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+h3 span a:hover, .edit-btn:hover {
+	background-color: #D4145A;
+	color: #f2f2f2;
+	cursor: pointer;
+}
+
+input {
+	width: 100%;
+	max-width: 280px;
+	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+	outline: none;
+	background-color: transparent;
+	border: none;
+	border-bottom: 3px solid	#2d2a2b;
+	padding: 10px;
+}
+
+.save {
+	width: 100%;
+	max-width: 150px;
+	margin: 25px auto;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+	outline: none;
+	background-color: transparent;
+	border: 3px solid	#39b54a;
+	padding: 10px;
+	border-radius: 10px;
+	color: #f2f2f2;
+	background-color: #39b54a;
+}
+
+.save:hover {
+	cursor: pointer;
+	background-color: #2d903b;
+	border-color: #2d903b;
+}
+
+.smooth3 {
+	transition: all 0.3s ease-in-out;
+}
+
+.btn {
+	margin: 0 auto;
+	padding-bottom: 45px;
+	position: relative;
+}
+
+.btn a {
+	text-decoration: none;
+	color: inherit;
+	font-size: 2rem;
+	border: 3px solid #2d2a2b;
+	padding: 5px;
+	width: 125px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#edit-form {
+	display: inline-block;
+	padding-left: 25px;
+}
+
+.btn span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.btn span:last-child {
+	font-size: 1.5rem;
+}
+
+.btn img {
+	max-width: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+
+.btn a:hover {
+	padding: 10px;
+}
+
+#flower-container {
+	list-style-type: none;
+	padding: 0;
+	margin: 35px auto;
+	display: flex;
+	align-items: top;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 900px;
+	flex-wrap: wrap;
+}
+
+#flower-container li {
+	width: 250px;
+	height: 275px;
+	margin: 25px auto;
+}
+
+#flower-container li button {
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 15px;
+	color: inherit;
+	border-radius: 0;
+	border: none;
+	background-color: transparent;
+	font-family: 'Roboto', sans-serif;
+	font-size: inherit;
+}
+
+#flower-container li button:hover {
+	box-shadow: 0 0 15px #2d2a2b;
+	cursor: pointer;
+}
+
+#flower-container li button div, #flower-form .image {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 175px;
+	height: 175px;
+	margin: 0 auto;
+	top: 0;
+	margin-bottom: 10px;
+}
+
+#flower-container li button p {
+	margin: 0;
+	height: 56px;
+}
+
+#recent-sightings {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 950px;
+}
+
+#recent-sightings li {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 15px 0;
+	flex-wrap: wrap;
+}
+
+#recent-sightings li:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+#recent-sightings li span {
+	min-width: 300px;
+	margin: 0 auto;
+}
+
+#sighting-title {
+	font-family: 'Dosis', sans-serif;
+	font-weight: 700;
+}
+
+#action-buttons {
 	width: 100%;
 }
 
-/* ----------- */
+#action-buttons div {
+	display: inline-block;
+	vertical-align: top;
+}
+
+footer {
+	display: block;
+	margin: 75px auto;
+	width: 100%;
+	height: 25px;
+}
+
+#flower-form {
+	position: relative;
+}
+
+#flower-form img {
+	max-width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#flower-form div {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#flower-form span {
+	font-family: 'Dosis', sans-serif;
+	font-weight: 700;
+	padding-right: 25px;
+}
+
+#flower-form form {
+	position: absolute;
+	background-color: #f2f2f2;
+	width: 100%;
+	top: -50px;
+	margin: 45px 0;
+	padding: 35px 0;
+}
+
+#flower-information {
+	padding-bottom: 45px;
+}
+
+
+#new form {
+	width: 100%;
+	max-width: 470px;
+	margin: 0 auto;
+}
+
+.field {
+	margin: 35px auto;
+}
+
+.field label {
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	margin: 0 auto;
+	display: block;
+}
+
+.field select {
+	padding: 15px;
+	border: none;
+	border-bottom: 3px solid #2d2a2b;
+	outline: none;
+	margin: 0 auto;
+	border-radius: 0;
+	width: 275px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	cursor: pointer;
+	-moz-appearance: none;
+	-webkit-appearance:none;
+	appearance: none;
+	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='#2d2a2b'><polygon points='0,0 25,0 12.5,12.5'/></svg>");
+	background-repeat: no-repeat;
+	background-position: calc( 100% - 25px ) 70%;
+	background-color: #f2f2f2;
+}
+
+#date {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 275px;
+	margin: 0 auto;
+}
+
+.field #day {
+	max-width: 70px;
+	background: transparent;
+	margin: 0;
+	padding-left: 20px;
+}
+
+.field #month {
+	max-width: 70px;
+	background: transparent;
+	margin: 0;
+}
+
+.field #month option {
+	padding: 15px 10px;
+	padding-left: 20px;
+
+}
+
+.field #month #default {
+	padding-left: -10px !important;
+}
+
+.field #year {
+	max-width: 90px;
+	background: transparent;
+	margin: 0;
+	padding-left: 17px;
+}
+
+#flower-edit {
+	margin-top: 55px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 600px) {
+	h3 span {
+		padding-left: 0;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#edit-form {
+		display: block;
+		padding-left: 0;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.field select, .field label {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.field label {
+		width: 155px;
+		text-align: right;
+	}
+
+	.field select, #date {
+		margin-left: 25px;
+	}
+}

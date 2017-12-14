@@ -1,0 +1,137 @@
+{% extends 'website/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} | Add New Sighting {% endblock title %}
+
+{% block contents %}
+
+	<div id="new">
+		<h3>
+			Add a New Sighting
+		</h3>
+
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="field">
+				<label>Common Name</label>
+				<select name="name">
+					<option selected disabled>- What -</option>
+					{% for flower in flowers %}
+						<option label="{{ flower.comname }}" value="{{ flower.comname }}">{{ flower.comname }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="field">
+				<label>Sighted By</label>
+				<select name="person">
+					<option selected disabled>- Who -</option>
+					<option label="Brad" value="Brad">Brad</option>
+					<option label="Donna" value="Donna">Donna</option>
+					<option label="Helen" value="Helen">Helen</option>
+					<option label="James" value="James">James</option>
+					<option label="Jennifer" value="Jennifer">Jennifer</option>
+					<option label="John" value="John">John</option>
+					<option label="Maria" value="Maria">Maria</option>
+					<option label="Michael" value="Michael">Michael</option>
+					<option label="Pete" value="Pete">Pete</option>
+					<option label="Robert" value="Robert">Robert</option>
+					<option label="Sandra" value="Sandra">Sandra</option>
+					<option label="Tim" value="Tim">Tim</option>
+				</select>
+			</div>
+
+			<div class="field">
+				<label>Location</label>
+				<select name="location">
+					<option selected disabled>- Where -</option>
+					{% for feature in features %}
+						<option label="{{ feature.location }}" value="{{ feature.location }}">{{ feature.location }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="field">
+				<label>Sighted On</label>
+				<div id="date">
+					
+					<select name="year" id="year">
+						<option selected disabled>YYYY</option>
+						<option label="2006" value="2006">2006</option>
+						<option label="2007" value="2007">2007</option>
+						<option label="2008" value="2008">2008</option>
+						<option label="2009" value="2009">2009</option>
+						<option label="2010" value="2010">2010</option>
+						<option label="2011" value="2011">2011</option>
+						<option label="2012" value="2012">2012</option>
+						<option label="2013" value="2013">2013</option>
+						<option label="2014" value="2014">2014</option>
+						<option label="2015" value="2015">2015</option>
+						<option label="2016" value="2016">2016</option>
+						<option label="2017" value="2017">2017</option>
+						<option label="2018" value="2018">2018</option>
+						<option label="2019" value="2019">2019</option>
+						<option label="2020" value="2020">2020</option>
+						<option label="2021" value="2021">2021</option>
+						<option label="2022" value="2022">2022</option>
+						<option label="2023" value="2023">2023</option>
+						<option label="2024" value="2024">2024</option>
+						<option label="2025" value="2025">2025</option>
+					</select>
+
+					<select name="month" id="month">
+						<option selected disabled>MM</option>
+						<option label="01" value="01">01</option>
+						<option label="02" value="02">02</option>
+						<option label="03" value="03">03</option>
+						<option label="04" value="04">04</option>
+						<option label="05" value="05">05</option>
+						<option label="06" value="06">06</option>
+						<option label="07" value="07">07</option>
+						<option label="08" value="08">08</option>
+						<option label="09" value="09">09</option>
+						<option label="10" value="10">10</option>
+						<option label="11" value="11">11</option>
+						<option label="12" value="12">12</option>
+					</select>
+
+					<select name="day" id="day">
+						<option selected disabled>DD</option>
+					</select>
+				</div>
+			</div>
+
+			<button class="save smooth3" type="submit" value="submit">Add</button>
+
+		</form>
+	</div>
+
+	<script>
+		var select_day = document.getElementById('day');
+		
+		for (var i = 1; i < 32; i++) {
+			var day = document.createElement("OPTION");
+
+			var num = i;
+			if (num < 10) {
+				num = "0" + i;
+			}
+			 
+			day.setAttribute("label", num);
+			day.setAttribute("value", num);
+			day.innerHTML = num;
+			select_day.appendChild(day);
+		}
+	</script>
+
+
+{% endblock contents %}
+
+
+
+
+
+
+
+

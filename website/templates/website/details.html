@@ -1,0 +1,55 @@
+{% extends 'website/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} | Flower Name {% endblock title %}
+
+{% block contents %}
+
+	<div id="flower-information">
+		{% block flower %}
+		<h3>
+			{{ flower.comname }}
+			<form id="edit-form" method="post" action="{% url 'website:details' %}">
+				{% csrf_token %}
+				<input type="hidden" name="edit_flower">
+				<button class="smooth3 edit-btn" type="submit" name="flower" value="{{ flower.comname }}">&#9998;</button>
+			</form>
+		</h3>
+
+		<div id="flower-form">
+			<div class="image" style="background-image: url('{{ flower.get_image_name }}');"></div>
+			<div>
+				<span>Genus:</span> {{ flower.genus }}<br>
+				<span>Species:</span> {{ flower.species }}
+			</div>
+
+		</div>
+		
+			{% endblock flower %}
+	</div>
+
+	<h3>
+		Recent Sightings
+		<span>
+			<a class="smooth3" href="{% url 'website:add_sighting' %}" title="add new sighting">&#65291;</a>
+		</span>
+	</h3>
+
+	<ul id="recent-sightings">
+		<li id="sighting-title">
+			<span>Date</span>
+			<span>Location</span>
+			<span>Sighted By</span>
+		</li>
+
+		{% for sighting in sightings %}
+			<li>
+				<span>{{ sighting.3 }}</span>
+				<span>{{ sighting.2 }}</span>
+				<span>{{ sighting.1 }}</span>
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock contents %}

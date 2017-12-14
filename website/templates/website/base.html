@@ -8,13 +8,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>{% block title %}Django Template Project{% endblock title %}</title>
+	<title> SSWC {% block title %} {% endblock title %} </title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="{% static 'website/images/favicon.png' %}?v=2">
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="{% static 'website/css/style.css' %}"/>
 
-	<!-- Favicon -->
-	<link rel="icon" href="{% static 'website/images/favicon.ico' %}?v=2">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis:700|Roboto:300" rel="stylesheet">
 
 	{% block head_js %}
 
@@ -23,9 +26,21 @@
 </head>
 
 <body>
+
+	<header>
+		<a href="{% url 'website:home' %}">
+			<img src="{% static 'website/images/logo.svg' %}" alt="sswc logo">
+			<h1>Southern Sierra Wildflower Club</h1>
+		</a>
+	</header>
+
 	{% block contents %}
 
 	{% endblock contents %}
+
+	<footer>
+		
+	</footer>
 
 	{% block js %}
 

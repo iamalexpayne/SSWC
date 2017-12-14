@@ -5,33 +5,84 @@ from django.conf import settings
 from django.core.exceptions import SuspiciousOperation
 
 from .utils import recaptcha_validation
+from django.utils.dateparse import parse_date
+
+from .models import	Flowers, Features, Sightings
+from .forms import FlowerForm, SightingForm
+
+from django.utils.text import slugify
+
+
+
 
 # Home
-def home_page(request):
-	return render(request, 'website/home_page.html')
+def home(request):
+	flowers = Flowers.objects.using('sswc').all().order_by('comname')
+	context = {'flowers': flowers}
+	return render(request, 'website/home.html', context)
 
-# Login
-def login(request):
+
+
+# Details
+def details(request):
+	if (request.method != "POST"):
+		return redirect('website:home')
+
+	name = request.POST.get('flower', request.POST.get('comname'))
+	flower = Flowers.objects.using('sswc').get(comname=name)
+
+	sightings = Sightings.objects.using('sswc').values_list('name', 'person', 'location', 'sighted').filter(name=name).order_by('-sighted')[:10]
+
+	if ('save_flower' in request.POST):
+		flower.comname = request.POST.get('comname')
+		flower.genus = request.POST.get('genus')
+		flower.species = request.POST.get('species')
+		flower.save()
+
+	context = {'flower': flower, 'sightings': sightings }
+	
+	if ('edit_flower' in request.POST):
+		return render(request, 'website/edit_flower.html', context)
+
+	return render(request, 'website/details.html', context)
+
+
+# Add New Sighting
+def add_sighting(request):
 	if (request.method == "POST"):
-		if recaptcha_validation(request.POST.get('g-recaptcha-response')):
-			form = AuthenticationForm(request, request.POST)
-			if form.is_valid():
-				username = form.cleaned_data.get('username')
-				raw_password = form.cleaned_data.get('password')
-				user = auth_authenticate(username=username, password=raw_password)
-				auth_login(request, user)
-				next_page = request.GET.get('next', 'website:home_page')
-				return redirect(next_page)
-		else:
-			raise SuspiciousOperation()
+		form = SightingForm(request.POST)
+
+
+		name = request.POST.get('name')
+		person = request.POST.get('person')
+		location = request.POST.get('location')
+		date = request.POST.get('year') + '-' + request.POST.get('month') + '-' + request.POST.get('day')
+		
+		sighted = parse_date(date)
+
+
+		print(name, person, location, sighted)
+		
+		sighting = Sightings(name, person, location, sighted)
+
+		sighting.save()
+
+		return redirect('website:home')
+
+
 	else:
-		form = AuthenticationForm()
+		flowers = Flowers.objects.using('sswc').all().order_by('comname')
+		features = Features.objects.using('sswc').all().order_by('location')
+		context = {'flowers': flowers, 'features': features}
+		form = SightingForm()
 
-	context = { 'form': form, 'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY }
-	return render(request, 'registration/login_page.html', context)
+		return render(request, 'website/add_sighting.html', context)
 
-# Logout
-def logout(request):
-	auth_logout(request)
-	next_page = request.GET.get('next', 'website:home_page')
-	return redirect(next_page)
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+{% extends 'website/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} | Home {% endblock title %}
+
+{% block contents %}
+
+	<div class="btn">
+		<a class="smooth3" href="{% url 'website:add_sighting' %}" title="Add New Sighting">
+			<span>+</span>
+			<img src="{% static 'website/images/binocs.svg' %}">
+		</a>
+	</div>
+
+	<form method="post" action="{% url 'website:details' %}">
+		{% csrf_token %}
+		<ul id="flower-container">
+			{% for flower in flowers %}
+				<li>
+					<button class="smooth3" name="flower" type="submit" value="{{ flower.comname }}">
+						<div style="background-image: url('{{ flower.get_image_name }}');"></div>
+						<p>{{ flower.comname }}</p>
+					</button>
+				</li>
+			{% endfor %}
+		</ul>
+	</form>
+
+{% endblock contents %}

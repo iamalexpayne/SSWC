@@ -1,0 +1,15 @@
+{% extends 'website/details.html' %}
+
+{% load staticfiles %}
+
+{% block flower %}
+	<form id="flower-edit" method="post" action="">
+		{% csrf_token %}
+		<input type="hidden" name="save_flower">
+		<input type="hidden" name="flower" value="{{ flower.comname }}">
+		<input type="text" name="comname" value="{{ flower.comname }}"><br>
+		<input type="text" name="genus" value="{{ flower.genus }}"><br>
+		<input type="text" name="species" value="{{ flower.species }}"><br>
+		<button class="save smooth3" type="submit" value="submit">Save</button>
+	</form>
+{% endblock flower %}
